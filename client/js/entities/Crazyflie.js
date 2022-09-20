@@ -15,16 +15,42 @@ class Crazyflie {
     this.scale = scale;
     this.entity = entity;
 
-    var geometry =
-      new THREE.BoxBufferGeometry(0.1 * scale, 0.1 * scale, 0.1 * scale);
+    /* We do not have a Crazyflie model in memory */
+    if (!window.CrazyflieModel) {
+        var that = this;
+        if (window.CrazyflieModel_isLoading) {
+            /* Some other instance is already loading this same robot */
+            /* Keep checking for loaded model */
+            var t = setInterval(() => {
+                if (!window.CrazyflieModel_isLoading) {
+                    /* Loaded by other loader instance */
+		    clearInterval(t);
+		    that.buildModel(window.CrazyflieModel.clone(), entity, EntityLoadingFinishedFn);
+                }
+	    }, 10);
+        } else {
+	    window.CrazyflieModel_isLoading = true;
+	    var objectLoader = new THREE.ObjectLoader();
+	    objectLoader.load("/models/cf2.json", function(crazyflieBot) {
+		crazyflieBot.scale.multiplyScalar(scale / 2);
+		var boundingBox = new THREE.Box3().setFromObject(crazyflieBot);
+		for (let i = 0; i < crazyflieBot.children.length; ++i) {
+		    crazyflieBot.children[i].material = new THREE.MeshPhongMaterial({
+                        color: 0x000000
+		    });
+		}
+		window.CrazyflieModel = crazyflieBot;
+		that.buildModel(crazyflieBot, entity, EntityLoadingFinishedFn);
+	    });
+	}
+    } else {
+	that.buildModel(window.CrazyflieModel.clone(), entity, EntityLoadingFinishedFn);
+    }
+  }
 
-    geometry.translate(0, 0, 2 * scale * 0.5);
-
-    var material = new THREE.MeshPhongMaterial({
-      color: 0x00ff00,  // Blue color
-    });
-
-    var mesh = new THREE.Mesh(geometry, material);
+  buildModel(geometry, entity, EntityLoadingFinishedFn) {
+    var mesh = new THREE.Mesh();
+    mesh.add(geometry);
 
     mesh.rotation.setFromQuaternion(new THREE.Quaternion(
       entity.orientation.x,
