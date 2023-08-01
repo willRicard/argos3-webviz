@@ -9,6 +9,13 @@
  * Copyright (c) 2020 NEST Lab
  */
 
+import jQuery from 'jquery';
+import * as THREE from 'three';
+
+window.jQuery = jQuery;
+window.$ = jQuery;
+
+window.THREE = THREE;
 
 /* Define function to run after all files are loaded */
 var onAllFilesLoaded = function () {
@@ -63,16 +70,16 @@ var onAllFilesLoaded = function () {
 
     /* Load main logic code sub-files - sequentially */
     /* load threejs scene */
-    loadJS("/js/three_scene.js", function () {
+    import("/js/three_scene.js").then(function({InitializeThreejs}) {
       /* Get the panel from layout */
       window.threejs_panel = $("#layout_app_layout_panel_main .w2ui-panel-content")
 
       /* Setup scene */
-      IntializeThreejs(threejs_panel)
-    }, true);
+      InitializeThreejs(threejs_panel)
+    });
 
     /* Load websockets and connect to server */
-    loadJS("/js/websockets.js", function () {
+    import("/js/websockets.js").then(function({ConnectWebSockets}) {
 
       /* Add styling for log divs */
       $("#layout_log_layout_panel_top>div.w2ui-panel-content")
@@ -234,12 +241,11 @@ var onAllFilesLoaded = function () {
 
       $("#preloader").fadeOut()
       ConnectWebSockets()
-    }, true);
+    });
   });
 }
 
 /* Load Jquery - sequentially */
-loadJS("/node_modules/jquery/dist/jquery.min.js", true)
 loadJS("/node_modules/w2ui/w2ui-1.5.min.js", true) /* Panels */
 loadJS("/node_modules/clusterize.js/clusterize.min.js", true) /* Better scroll for logs */
 loadJS("/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js", true); /* Right click */
@@ -249,10 +255,6 @@ loadJS("/js/libs/websocket-as-promised.js", true); /* basic websockets */
 loadJS("/node_modules/robust-websocket/robust-websocket.js", true); /* auto Reconnect */
 
 /* Load Three.js code */
-loadJS("/node_modules/three/build/three.min.js", true);
-loadJS("/js/libs/OrbitControls.js", true);
-
-loadJS("/js/libs/CSS2DRenderer.js", true);
 
 loadJS("/node_modules/stats.js/build/stats.min.js", true);
 loadJS("/js/libs/GLTFLoader.js", true);

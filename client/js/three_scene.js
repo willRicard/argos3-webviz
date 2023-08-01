@@ -9,6 +9,9 @@
  * Copyright (c) 2020 NEST Lab
  */
 
+import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {CSS2DRenderer} from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
 var camera, controls, renderer, stats, menuRenderer;
 var scale;
@@ -30,7 +33,7 @@ scene.background = new THREE.Color(0x007f7f);
 /* ----------------------- */
 var sceneEntities = [];
 
-var IntializeThreejs = function (threejs_panel) {
+export function InitializeThreejs(threejs_panel) {
   var _width = threejs_panel.width();
   var _height = threejs_panel.height();
 
@@ -47,7 +50,7 @@ var IntializeThreejs = function (threejs_panel) {
   threejs_panel.append(renderer.domElement);
 
   /* Right click menu renderer */
-  menuRenderer = new THREE.CSS2DRenderer();
+  menuRenderer = new CSS2DRenderer();
   menuRenderer.domElement.id = 'dom_menu'
   menuRenderer.domElement.style.backgroundColor = 'rgba(0,0,0,0.4)';
   menuRenderer.domElement.style.display = 'none';
@@ -85,7 +88,7 @@ var IntializeThreejs = function (threejs_panel) {
   });
 }
 
-function initSceneWithScale(_scale) {
+export function initSceneWithScale(_scale) {
   scale = _scale;
 
   camera = new THREE.PerspectiveCamera(45, window.threejs_panel.width() / window.threejs_panel.height(), 0.01, scale * 2500);
@@ -97,7 +100,7 @@ function initSceneWithScale(_scale) {
 
   // Controls
   // Possible types: OrbitControls, MapControls
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls = new OrbitControls(camera, renderer.domElement);
 
   controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
 
@@ -512,7 +515,7 @@ function get2DProjectedPosition(mouse, object) {
   return pos
 }
 
-function animate() {
+export function animate() {
   requestAnimationFrame(animate);
   controls.update();
   render();

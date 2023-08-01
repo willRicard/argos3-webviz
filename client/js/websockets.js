@@ -9,8 +9,9 @@
  * Copyright (c) 2020 NEST Lab
  */
 
-(function (w) {
-  var ConnectWebSockets = function () {
+import {animate, initSceneWithScale} from './three_scene.js';
+
+export function ConnectWebSockets() {
     /* Server IP and port */
     var server = window.location.hostname + ":3000";
     /* Currently it takes the same server from where these files are hosted */
@@ -202,12 +203,3 @@
 
     wsp.open().catch(e => console.error(e));
   }
-
-  // commonjs
-  if (typeof module !== "undefined") {
-    module.exports = ConnectWebSockets;
-  }
-  else {
-    w.ConnectWebSockets = ConnectWebSockets;
-  }
-}(typeof global !== "undefined" ? global : this));
