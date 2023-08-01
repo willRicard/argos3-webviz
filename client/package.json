@@ -1,0 +1,27 @@
+{
+  "name": "argos3-webviz",
+  "version": "0.4.76",
+  "description": "A Web interface plugin for ARGoS 3",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NESTLab/argos3-webviz.git"
+  },
+  "keywords": [
+    "simulation",
+    "websockets",
+    "robotics"
+  ],
+  "author": "Prajankya Sonar <prajankya@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NESTLab/argos3-webviz/issues"
+  },
+  "homepage": "https://github.com/NESTLab/argos3-webviz#readme"
+}
