@@ -14,7 +14,7 @@ class Floor {
         this.scale = scale;
         this.entity = entity;
 
-        var geometry = new THREE.BoxBufferGeometry(
+        var geometry = new THREE.BoxGeometry(
             window.experiment.data.arena.size.x * scale,
             window.experiment.data.arena.size.y * scale,
             0.01

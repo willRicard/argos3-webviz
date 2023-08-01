@@ -67,7 +67,7 @@ class KheperaIV {
         var UNIT_SCALE = 0.001 * this.scale
 
         // --- LED 1
-        var led1Geom = new THREE.SphereBufferGeometry(
+        var led1Geom = new THREE.SphereGeometry(
             0.2,
             4,
             4
@@ -80,7 +80,7 @@ class KheperaIV {
         }));
 
         // --- LED 2
-        var led2Geom = new THREE.SphereBufferGeometry(
+        var led2Geom = new THREE.SphereGeometry(
             0.2,
             4,
             4
@@ -92,7 +92,7 @@ class KheperaIV {
         }));
 
         // --- LED 3
-        var led3Geom = new THREE.SphereBufferGeometry(
+        var led3Geom = new THREE.SphereGeometry(
             0.2,
             4,
             4

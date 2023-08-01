@@ -15,7 +15,7 @@ class DefaultEntity {
         this.entity = entity;
 
         try {
-            var dot = new THREE.Mesh(new THREE.BoxBufferGeometry(
+            var dot = new THREE.Mesh(new THREE.BoxGeometry(
                 1,
                 1,
                 1

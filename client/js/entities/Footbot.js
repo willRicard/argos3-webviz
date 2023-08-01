@@ -19,7 +19,7 @@ class Footbot {
         var UNIT_SCALE = 0.001 * scale
 
         var that = this;
-        var geometry = new THREE.CylinderBufferGeometry(
+        var geometry = new THREE.CylinderGeometry(
             70.40 * UNIT_SCALE,
             70.40 * UNIT_SCALE,
             53 * UNIT_SCALE,
@@ -43,7 +43,7 @@ class Footbot {
 
         /* LEDs */
         for (let i = 0; i < 12; ++i) {
-            var ledGeom = new THREE.SphereBufferGeometry(
+            var ledGeom = new THREE.SphereGeometry(
                 0.1,
                 4,
                 4

@@ -15,7 +15,7 @@ class Light {
 
         this.scale = scale_ * 0.001;
 
-        var geometry = new THREE.SphereBufferGeometry(
+        var geometry = new THREE.SphereGeometry(
             0.1 * scale,
             32, 32
         );

@@ -14,7 +14,7 @@ class Cylinder {
         this.scale = scale;
         this.entity = entity;
 
-        var geometry = new THREE.CylinderBufferGeometry(
+        var geometry = new THREE.CylinderGeometry(
             entity.radius * scale,
             entity.radius * scale,
             entity.height * scale,

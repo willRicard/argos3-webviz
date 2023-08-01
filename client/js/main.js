@@ -249,7 +249,7 @@ loadJS("/js/libs/websocket-as-promised.js", true); /* basic websockets */
 loadJS("/node_modules/robust-websocket/robust-websocket.js", true); /* auto Reconnect */
 
 /* Load Three.js code */
-loadJS("/js/libs/three.min.js", true);
+loadJS("/node_modules/three/build/three.min.js", true);
 loadJS("/js/libs/OrbitControls.js", true);
 
 loadJS("/js/libs/CSS2DRenderer.js", true);

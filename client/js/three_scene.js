@@ -23,7 +23,7 @@ window.isInitialized = false;
 window.isLoadingModels = false;
 
 /* Initialize Three.js scene */
-THREE.Object3D.DefaultUp.set(0, 0, 1);
+THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 scene.background = new THREE.Color(0x007f7f);
 
 
@@ -38,8 +38,10 @@ var IntializeThreejs = function (threejs_panel) {
   renderer = new THREE.WebGLRenderer({
     antialias: true
   });
+  renderer.useLegacyLights = true;
   renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  THREE.ColorManagement.enabled = false;
 
   /* Add canvas to page */
   renderer.setSize(_width, _height);
@@ -118,7 +120,7 @@ function initSceneWithScale(_scale) {
   /* If no floor entity in experiment */
   if (!floor_found) {
     /* Ground plane */
-    var plane_geometry = new THREE.BoxBufferGeometry(
+    var plane_geometry = new THREE.BoxGeometry(
       window.experiment.data.arena.size.x * scale,
       window.experiment.data.arena.size.y * scale,
       0.01

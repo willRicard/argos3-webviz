@@ -14,7 +14,7 @@ class Box {
         this.scale = scale;
         this.entity = entity;
 
-        var geometry = new THREE.BoxBufferGeometry(
+        var geometry = new THREE.BoxGeometry(
             entity.scale.x * scale,
             entity.scale.y * scale,
             entity.scale.z * scale
