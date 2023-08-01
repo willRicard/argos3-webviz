@@ -246,7 +246,7 @@ loadJS("/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js", true);
 
 /* Load Websockets code */
 loadJS("/js/libs/websocket-as-promised.js", true); /* basic websockets */
-loadJS("/js/libs/robust-websocket.js", true); /* auto Reconnect */
+loadJS("/node_modules/robust-websocket/robust-websocket.js", true); /* auto Reconnect */
 
 /* Load Three.js code */
 loadJS("/js/libs/three.min.js", true);
