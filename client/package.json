@@ -2,11 +2,14 @@
   "name": "argos3-webviz",
   "version": "0.4.76",
   "description": "A Web interface plugin for ARGoS 3",
-  "main": "index.js",
   "directories": {
     "example": "examples"
   },
+  "source": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
     "test": "jest"
   },
   "repository": {
@@ -28,6 +31,7 @@
     "clusterize.js": "^1.0.0",
     "jquery": "^3.7.0",
     "jquery-contextmenu": "^2.9.2",
+    "parcel": "latest",
     "rivets": "^0.9.6",
     "robust-websocket": "^1.0.0",
     "stats.js": "^0.17.0",

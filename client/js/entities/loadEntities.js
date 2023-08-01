@@ -23,7 +23,7 @@ loadJS("/js/entities/KheperaIV.js")
 /* Add your custom entity here.. */
 
 
-function GetEntity(entity, scale, callback) {
+window.GetEntity = function(entity, scale, callback) {
   /* You can use callback to get content synchronously */
   switch (entity.type) {
     case 'floor':

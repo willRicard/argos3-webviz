@@ -11,6 +11,10 @@
 
 (function (w) {
   var ConnectWebSockets = function () {
+    /* Server IP and port */
+    var server = window.location.hostname + ":3000";
+    /* Currently it takes the same server from where these files are hosted */
+
     var sockets_api = server + "?broadcasts,logs";
 
     /* use wss:// for SSL supported */
