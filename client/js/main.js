@@ -254,7 +254,7 @@ loadJS("/js/libs/OrbitControls.js", true);
 
 loadJS("/js/libs/CSS2DRenderer.js", true);
 
-loadJS("/js/libs/stats.min.js", true);
+loadJS("/node_modules/stats.js/build/stats.min.js", true);
 loadJS("/js/libs/GLTFLoader.js", true);
 
 /* Start running javascript after all files are loaded */
