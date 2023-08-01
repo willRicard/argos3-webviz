@@ -241,7 +241,7 @@ var onAllFilesLoaded = function () {
 /* Load Jquery - sequentially */
 loadJS("/node_modules/jquery/dist/jquery.min.js", true)
 loadJS("/node_modules/w2ui/w2ui-1.5.min.js", true) /* Panels */
-loadJS("/js/libs/clusterize.min.js", true) /* Better scroll for logs */
+loadJS("/node_modules/clusterize.js/clusterize.min.js", true) /* Better scroll for logs */
 loadJS("/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js", true); /* Right click */
 
 /* Load Websockets code */
