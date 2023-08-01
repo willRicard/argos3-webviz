@@ -242,7 +242,7 @@ var onAllFilesLoaded = function () {
 loadJS("/js/libs/jquery.min.js", true)
 loadJS("/node_modules/w2ui/w2ui-1.5.min.js", true) /* Panels */
 loadJS("/js/libs/clusterize.min.js", true) /* Better scroll for logs */
-loadJS("/js/libs/jquery.contextMenu.min.js", true); /* Right click */
+loadJS("/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js", true); /* Right click */
 
 /* Load Websockets code */
 loadJS("/js/libs/websocket-as-promised.js", true); /* basic websockets */

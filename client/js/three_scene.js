@@ -245,6 +245,7 @@ function onThreejsPanelMouseContextMenu(event) {
   var contextMenuConfig = {
     selector: '#dom_menu',
     appendTo: '#dom_menu',
+    zIndex: 0,
     trigger: 'none',
     events: {
       show: function () {
