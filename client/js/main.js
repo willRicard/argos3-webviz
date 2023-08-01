@@ -258,4 +258,4 @@ loadJS("/node_modules/stats.js/build/stats.min.js", true);
 loadJS("/js/libs/GLTFLoader.js", true);
 
 /* Start running javascript after all files are loaded */
-loadJS("/js/libs/rivets.bundled.min.js", onAllFilesLoaded, true);
+loadJS("/node_modules/rivets/dist/rivets.bundled.min.js", onAllFilesLoaded, true);
