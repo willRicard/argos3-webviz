@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/NESTLab/argos3-webviz/issues"
   },
-  "homepage": "https://github.com/NESTLab/argos3-webviz#readme"
+  "homepage": "https://github.com/NESTLab/argos3-webviz#readme",
+  "devDependencies": {
+    "w2ui": "^1.5.0"
+  }
 }

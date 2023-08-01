@@ -48,7 +48,7 @@ var onAllFilesLoaded = function () {
     });
 
     /* Make them nested */
-    w2ui['app_layout'].content('right', w2ui['log_layout']);
+    w2ui['app_layout'].html('right', w2ui['log_layout']);
 
 
     /* On Threejs panel Resize */
@@ -240,7 +240,7 @@ var onAllFilesLoaded = function () {
 
 /* Load Jquery - sequentially */
 loadJS("/js/libs/jquery.min.js", true)
-loadJS("/js/libs/w2ui-1.5.rc1.min.js", true) /* Panels */
+loadJS("/node_modules/w2ui/w2ui-1.5.min.js", true) /* Panels */
 loadJS("/js/libs/clusterize.min.js", true) /* Better scroll for logs */
 loadJS("/js/libs/jquery.contextMenu.min.js", true); /* Right click */
 
