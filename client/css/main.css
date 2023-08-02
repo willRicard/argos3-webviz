@@ -9,7 +9,7 @@
     font-style: normal;
 }
 
-[class*='icon-']:before {
+.wv-icon:before {
     display: inline-block;
     font-family: 'webviz font';
     font-style: normal;

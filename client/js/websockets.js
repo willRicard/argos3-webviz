@@ -10,6 +10,9 @@
  */
 
 import {animate, initSceneWithScale} from './three_scene.js';
+import {w2popup} from 'w2ui';
+
+import {disconnectedModalBody} from './main.js';
 
 export function ConnectWebSockets() {
     /* Server IP and port */
@@ -33,7 +36,7 @@ export function ConnectWebSockets() {
       modal: true,
       showClose: false,
       width: 300,     // width in px
-      height: 80,
+      height: 110,
     });
 
     window.wsp = new window.WebSocketAsPromised(sockets_api, {
@@ -176,7 +179,6 @@ export function ConnectWebSockets() {
 
       /* Close connecting dialog */
       setTimeout(() => {
-        loadingPopup.close()
         w2popup.close()
       }, 500);
       window.experiment.connection = "Connected";
@@ -188,11 +190,12 @@ export function ConnectWebSockets() {
       setTimeout(() => {
         loadingPopup.close()
         setTimeout(() => {
-          $("#disconnectedModal").w2popup({
+          w2popup.open({
             title: 'Cannot connect to server',
+            body: disconnectedModalBody,
             modal: true,
             showClose: false,
-            height: 100,
+            height: 130,
           });
         }, 500);
       }, 500);

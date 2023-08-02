@@ -10,12 +10,19 @@
  */
 
 import jQuery from 'jquery';
+import {w2layout, w2popup, w2ui} from 'w2ui';
 import * as THREE from 'three';
+
+import {onThreejsPanelResize} from './three_scene.js';
+import helpModalBody from 'bundle-text:../html/help-modal.html';
+import disconnectedModalBodyExport from 'bundle-text:../html/disconnected-modal.html';
 
 window.jQuery = jQuery;
 window.$ = jQuery;
 
 window.THREE = THREE;
+
+export let disconnectedModalBody = disconnectedModalBodyExport;
 
 /* Define function to run after all files are loaded */
 var onAllFilesLoaded = function () {
@@ -23,7 +30,8 @@ var onAllFilesLoaded = function () {
   /* On Jquery load */
   $(function () {
     /* main panel-layout of the page */
-    $('#layout').w2layout({
+    new w2layout({
+      box: '#layout',
       name: 'app_layout',
       padding: 4,
       panels: [
@@ -34,7 +42,8 @@ var onAllFilesLoaded = function () {
       ]
     });
     /* Log layout */
-    $().w2layout({
+    new w2layout({
+      box: '#layout_app_layout_panel_right', // make them nested
       name: 'log_layout',
       padding: 5,
       panels: [{
@@ -42,21 +51,17 @@ var onAllFilesLoaded = function () {
         size: "50%",
         resizable: true,
         title: "Log",
-        style: "padding:4px 8px;background:white",
-        content: '<div id="contentAreaLog" class="clusterize-content"></div>'
+        style: "padding:4px 8px;margin-top:11px;background:white",
+        html: '<div id="contentAreaLog" class="clusterize-content"></div>'
       }, {
         type: 'main',
         size: "50%",
         title: "LogErr",
         resizable: true,
-        style: "padding:4px 8px;background:white",
-        content: '<div id="contentAreaLogErr" class="clusterize-content"></div>'
+        style: "padding:4px 8px;margin-top:11px;background:white",
+        html: '<div id="contentAreaLogErr" class="clusterize-content"></div>'
       }]
     });
-
-    /* Make them nested */
-    w2ui['app_layout'].html('right', w2ui['log_layout']);
-
 
     /* On Threejs panel Resize */
     w2ui['app_layout'].on('resize', function (event) {
@@ -119,6 +124,7 @@ var onAllFilesLoaded = function () {
         )
         .append($("<div/>")
           .addClass('button')
+          .addClass('wv-icon')
           .addClass('icon-step')
           .attr("title", "Step experiment")
           .prop("title", "Step experiment")//for IE
@@ -128,6 +134,7 @@ var onAllFilesLoaded = function () {
         )
         .append($("<div/>")
           .addClass('button')
+          .addClass('wv-icon')
           .addClass('icon-play')
           .attr('id', 'play_button')
           .attr("title", "Play experiment")
@@ -138,6 +145,7 @@ var onAllFilesLoaded = function () {
         )
         .append($("<div/>")
           .addClass('button')
+          .addClass('wv-icon')
           .addClass('icon-pause')
           .attr('id', 'pause_button')
           .attr("title", "Pause experiment")
@@ -148,6 +156,7 @@ var onAllFilesLoaded = function () {
         )
         .append($("<div/>")
           .addClass('button')
+          .addClass('wv-icon')
           .addClass('icon-ff')
           .attr('id', 'ff_button')
           .attr("title", "Fast forward experiment")
@@ -179,6 +188,7 @@ var onAllFilesLoaded = function () {
         .append($("<div/>")
           .addClass('button')
           .attr('id', 'stop_button')
+          .addClass('wv-icon')
           .addClass('icon-stop')
           .attr("title", "Terminate experiment")
           .prop("title", "Terminate experiment")//for IE
@@ -188,6 +198,7 @@ var onAllFilesLoaded = function () {
         )
         .append($("<div/>")
           .addClass('button')
+          .addClass('wv-icon')
           .addClass('icon-reset')
           .attr('id', 'reset_button')
           .attr("title", "Reset experiment")
@@ -211,14 +222,16 @@ var onAllFilesLoaded = function () {
         // )
         .append($("<div/>")
           .addClass('button')
+          .addClass('wv-icon')
           .addClass('icon-help')
           .attr("title", "Help")
           .prop("title", "Help")//for IE
           .click(function () {
-            $("#HelpModal").w2popup({
+            w2popup.open({
               title: 'Help',
+              body: helpModalBody,
               showClose: true,
-              height: 300,
+              height: 330,
               width: 500
             })
             // window.wsp.sendPacked({ command: 'reset' })
@@ -246,7 +259,6 @@ var onAllFilesLoaded = function () {
 }
 
 /* Load Jquery - sequentially */
-loadJS("/node_modules/w2ui/w2ui-1.5.min.js", true) /* Panels */
 loadJS("/node_modules/clusterize.js/clusterize.min.js", true) /* Better scroll for logs */
 loadJS("/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js", true); /* Right click */
 

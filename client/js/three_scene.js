@@ -224,10 +224,13 @@ function cleanUpdateScene() {
   })
 }
 
-function onThreejsPanelResize() {
+export function onThreejsPanelResize() {
   var _width = window.threejs_panel.width();
   var _height = window.threejs_panel.height();
 
+  if (!camera) {
+    return;
+  }
   camera.aspect = _width / _height
   camera.updateProjectionMatrix();
 
