@@ -16,6 +16,7 @@ import * as THREE from 'three';
 import {onThreejsPanelResize} from './three_scene.js';
 import helpModalBody from 'bundle-text:../html/help-modal.html';
 import disconnectedModalBodyExport from 'bundle-text:../html/disconnected-modal.html';
+import * as logs from './logs.js';
 
 window.jQuery = jQuery;
 window.$ = jQuery;
@@ -96,18 +97,7 @@ var onAllFilesLoaded = function () {
         .addClass("clusterize-scroll")
 
       /* Initialize Log objects */
-      window.log_clusterize = new Clusterize({
-        show_no_data_row: false,
-        scrollId: "scrollAreaLog",
-        contentId: 'contentAreaLog'
-      });
-
-      window.logerr_clusterize = new Clusterize({
-        show_no_data_row: false,
-        scrollId: "scrollAreaLogErr",
-        contentId: 'contentAreaLogErr'
-      });
-
+      logs.init();
 
       /* Add button on top panel */
       $("#layout_app_layout_panel_top>div.w2ui-panel-content")
@@ -259,7 +249,6 @@ var onAllFilesLoaded = function () {
 }
 
 /* Load Jquery - sequentially */
-loadJS("/node_modules/clusterize.js/clusterize.min.js", true) /* Better scroll for logs */
 loadJS("/node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js", true); /* Right click */
 
 /* Load Websockets code */

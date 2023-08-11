@@ -13,6 +13,7 @@ import {animate, initSceneWithScale} from './three_scene.js';
 import {w2popup} from 'w2ui';
 
 import {disconnectedModalBody} from './main.js';
+import * as logs from './logs.js';
 
 export function ConnectWebSockets() {
     /* Server IP and port */
@@ -152,8 +153,8 @@ export function ConnectWebSockets() {
                 data.messages[i].log_message + "</pre></div>");
             }
           }
-          window.log_clusterize.prepend(log_)
-          window.logerr_clusterize.prepend(logerr_)
+          logs.prepend(log_);
+          logs.prependErr(logerr_);
         }
       }
 
@@ -166,8 +167,7 @@ export function ConnectWebSockets() {
             $("#layout_app_layout_panel_top .button").removeClass("disabled")
           }
           setTimeout(() => { // due to some racing issues
-            window.log_clusterize.clear()
-            window.logerr_clusterize.clear()
+            logs.clear();
           }, 10);
         }
 
